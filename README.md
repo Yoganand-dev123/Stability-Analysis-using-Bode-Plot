@@ -6,6 +6,7 @@ Computer with MATLAB software
 
 ## Theory:
 
+Stability analysis using a Bode plot in MATLAB evaluates a system’s frequency response to determine its gain margin and phase margin. A system is stable when these margins are positive, indicating adequate separation from the instability point.
 
 
 ## Procedure:
@@ -17,13 +18,29 @@ Computer with MATLAB software
 	Also determine the stability.
 
 ## Program: 
-
+```
+num=1
+den=[0.05 0.6 1 0]
+sys=tf(num,den)
+bode(sys)
+grid on
+[Gm Pm Wpc Wgc]=margin(sys)
+if(Wpc>Wgc)
+    disp('stable')
+elseif(Wpc == Wgc)
+    disp('marginally stable')
+else
+    disp('unstable')
+end
+```
 ## Output:
+
+<img width="1771" height="881" alt="image" src="https://github.com/user-attachments/assets/bcd4982a-7c0c-46f0-a33b-238e531e013e" />
 
 ## Result:
 Thus the bode plot for the given transfer function was drawn and verified using MATLAB. <br>
-Gain margin = <br>
-Phase Margin = <br>
-Gain crossover frequency = <br>
-Phase crossover frequency = <br>
-The system is  ------------
+Gain margin = 12<br>
+Phase Margin = 60.4231<br>
+Gain crossover frequency = 0.9070<br>
+Phase crossover frequency = 4.4721<br>
+The system is stable
